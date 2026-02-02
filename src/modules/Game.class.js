@@ -208,7 +208,7 @@ class Game {
   }
 
   /**
-   * Returns the current game status.
+   * Returns the current game  status.
    *
    * @returns {string} One of: 'idle', 'playing', 'win', 'lose'
    *
