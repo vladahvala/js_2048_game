@@ -9,6 +9,7 @@ button.addEventListener('click', () => {
     game.start();
   } else if (button.classList.contains('restart')) {
     game.restart();
+    game.updateScore();
   }
 });
 

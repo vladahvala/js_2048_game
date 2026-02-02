@@ -281,7 +281,6 @@ class Game {
   restart() {
     this.board = this.initialState.map((row) => [...row]);
     this.score = 0;
-    this.updateScore();
     this.status = 'idle';
 
     const rows = document.querySelectorAll('.field-row');
