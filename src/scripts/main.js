@@ -25,9 +25,7 @@ function handleMove(moveFn) {
     game.addNewCell();
   }
 
-  if (!changed) {
-    game.checkLose();
-  }
+  game.checkLose();
 }
 
 document.addEventListener('keydown', (e) => {

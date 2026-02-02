@@ -59,6 +59,10 @@ class Game {
     }
 
     // updating score
+    this.updateScore();
+  }
+
+  updateScore() {
     const scoreEl = document.querySelector('.game-score');
 
     if (scoreEl) {
@@ -156,13 +160,33 @@ class Game {
   }
 
   checkLose() {
-    for (let a = 0; a < this.board.length; a++) {
-      for (let b = 0; b < this.board[a].length; b++) {
-        if (this.board[a][b] === 0) {
+    // checking empty cells
+    for (let r = 0; r < 4; r++) {
+      for (let c = 0; c < 4; c++) {
+        if (this.board[r][c] === 0) {
           return false;
         }
       }
     }
+
+    // horizontal check
+    for (let r = 0; r < 4; r++) {
+      for (let c = 0; c < 3; c++) {
+        if (this.board[r][c] === this.board[r][c + 1]) {
+          return false;
+        }
+      }
+    }
+
+    // vertical check
+    for (let c = 0; c < 4; c++) {
+      for (let r = 0; r < 3; r++) {
+        if (this.board[r][c] === this.board[r + 1][c]) {
+          return false;
+        }
+      }
+    }
+
     this.status = 'lose';
     this.showMessage('lose');
 
@@ -257,6 +281,7 @@ class Game {
   restart() {
     this.board = this.initialState.map((row) => [...row]);
     this.score = 0;
+    this.updateScore();
     this.status = 'idle';
 
     const rows = document.querySelectorAll('.field-row');
